@@ -1,0 +1,136 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+// int solve(int n,int arr[]){
+//    vector<int>left;
+//    int pesudoindex=-1;
+//    stack<pair<int,int>>s;
+//    for(int i=0;i<n;i++){
+//      if(s.size()==0)
+//      	left.push_back(pesudoindex);
+
+//      else
+//      	if(s.size()>0 && s.top().first>arr[i])
+//      		left.push_back(s.top().second);
+
+//      else
+//      	if(s.size()>0 && s.top().first<=arr[i]){
+//      		while(s.size()>0 && s.top().first<=arr[i])
+//      		{
+//      			s.pop();
+//      		}
+//      		if(s.size()==0){
+//      			left.push_back(-1);
+//      		}
+//      		else
+//      		{
+//      			left.push_back(s.top().second);
+//      		}
+//      	}
+//      	s.push({arr[i],i});
+//     }
+//   vector<int>right;
+//    pesudoindex=n;
+//    stack<pair<int,int>>s1;
+//    for(int i=n-1;i>=0;i--){
+//      if(s1.size()==0)
+//      	right.push_back(pesudoindex);
+
+//      else
+//      	if(s1.size()>0 && s1.top().first>arr[i])
+//      		right.push_back(s1.top().second);
+
+//      else
+//      	if(s1.size()>0 && s1.top().first<=arr[i]){
+//      		while(s1.size()>0 && s1.top().first<=arr[i])
+//      		{
+//      			s1.pop();
+//      		}
+//      		if(s1.size()==0){
+//      			right.push_back(-1);
+//      		}
+//      		else
+//      		{
+//      			right.push_back(s1.top().second);
+//      		}
+//     	}
+//      	s1.push({arr[i],i});
+//     }
+//   //reverse(right.begin(),right.end());
+//     vector<int>width(n);
+//     for(int i=0;i<n;i++){
+//     	width[i]=right[i]-left[i]-1;
+//     }
+//   int area[n];
+//   for(int i=0;i<n;i++){
+//   	area[i]=width[i]*arr[i];
+//    }
+//    sort(area,area+n);
+//    int ans=area[n-1];
+//    return ans;
+  
+// }
+
+// //Rain water  trapping
+// int rainwater(int arr[],int n){
+//   int maxl[n];
+//   int maxr[n];
+//   maxl[0]=arr[0];
+//   maxr[n-1]=arr[n-1];
+//   int sum=0;
+//   for(int i=1;i<n;i++){
+//     maxl[i]=max(maxl[i-1],arr[i]);
+//   }
+//   for(int i=n-2;i>=0;i--){
+//     maxr[i]=max(maxr[i+1],arr[i]);
+//   }
+//   int water[n];
+//   for(int i=0;i<n;i++){
+//     water[i]=min(maxl[i],maxr[i])-arr[i];
+//   }
+//   for(int i=0;i<n;i++){
+//     sum=sum+water[i];
+//   }
+// return sum;
+// }
+
+
+//min stack
+stack<int>st;
+stack<int>stt;
+void push(int x){
+  s.push(x);
+  if(ss.size()==0 || ss.top()>=x)
+    ss.push(x);
+}
+void pop(){
+   if(s.size()==0)
+    return -1;
+ if(s.top()==ss.top()){
+  int ans=s.top();
+  s.pop();
+  ss.pop();
+ }
+else
+  s.pop();
+
+return ans;
+
+}
+int getmin(){
+  if(stt.size()==0)
+    return -1;
+  return stt.top();
+}
+
+int main(){
+	int n;
+	cin>>n;
+	int arr[n];
+	for(int i=0;i<n;i++){
+		cin>>arr[i];
+	}
+   cout<<rainwater(arr,n);
+}
+
+
